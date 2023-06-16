@@ -1,0 +1,15 @@
+Areas for improvement/deficiencies:
+
+1. Traceability: The SRS lacks traceability. There is no mention of how the requirements are linked to the hazards and risks identified during the risk management process outlined in ISO 14971.
+
+2. Non-functional requirements: The SRS lacks important non-functional requirements, such as reliability, maintainability and cybersecurity.
+
+3. Performance requirements: The SRS lacks detailed performance requirements. For example, it does not specify the laser output power levels, stability and accuracy required.
+
+4. Error handling: The functional requirements lack detailed error handling scenarios and responses in abnormal situations.
+
+5. Software quality assurance: The SRS does not mention how software quality assurance will be implemented, such as testing and verification/validation processes.
+
+6. Software lifecycle: The SRS does not mention how software lifecycle processes will be implemented, such as design control and configuration management. 
+
+7. User needs: The SRS lacks detailed user needs. It does not specify the specific needs and requirements of the licensed dental professionals and trained dental assistants who will use the device.

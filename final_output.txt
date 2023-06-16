@@ -1,0 +1,171 @@
+Updated SRS_DOC:
+
+Fibercure TITEL  
+Lumendo AG CONFIDENTIAL Page 1 of 11 SOFTWARE REQUIREMENTS SPECIFICATIONS  
+1 INTRODUCTION  
+1.1 Purpose  
+This document represents the Software requirement specifications for Fibercure laser pen. In this document, it will be described what the software will do and how it will be expected to perform. It will describe the functionality that the product needs to fulfill the need of all stakeholders. The software safety class of Fibercure laser pen software has been identified as B, based on the potential risk of harm to the patient, operator, and environment. 
+1.2 Intended Audience  
+This document will be accessed by Medency’s General Manager Alessandro Boschi, Medency’s quality and regulatory office, Medency’s electronic engineer Nicola Zanforlin, the product recipient company Lumendo, and an external consultant Diego Bartot. The SRS document will be used as a guideline for the design of the software. 
+1.3 Terms and Abbreviations  
+Term/Abbreviation Description  
+SRS Software requirement specifications  
+SOUP Software of unknown provenience  
+Endofill Is a low-viscosity, injectable, hydrophilic, light-curable endodontic sealer  
+
+2 OVERALL DESCRIPTION  
+2.1 Product Scope  
+Fibercure is a dental, cordless, battery-powered laser-based curing lamp. It is an easy-to-use illumination device developed specifically to cure Endofill within the root canal. Fibercure includes a thin optical fiber tip that can easily penetrate into small cavities, ensuring that a focused light beam homogeneously reaches the entirety of structures where light access would be unattainable using current devices. The Fibercure laser pen software will adhere to risk management procedures as outlined in ISO 14971. The risk management process will be integrated throughout the software lifecycle to identify, analyze, evaluate, and mitigate potential risks.
+
+2.2 Intended Use  
+This product allows a fast and efficient photopolymerization of Endofill inside root canals. Fibercure is designed for the use of Endofill, with the correct light power, wavelength, and time of use pre-registered.
+
+2.3 User Needs  
+The intended users of Fibercure are licensed dental professionals with experience in endodontics. In addition, Fibercure is procured, stored, and prepared for use by trained dental nurses or trained dental assistants. Fibercure is intended to be an easy-to-use dental curing lamp in curing Endofill material within the root canal. This represents a faster and easier method for root canal care compared to current applications in the same clinical application field.
+
+2.4 Assumptions and Dependencies  
+Fibercure is dependent on the light-curable material, which is developed in another project (Endofill). Only when both projects are ready, Fibercure can be marketed. The forthcoming development steps, following assumptions are made:  
+• The light-curable material (Endofill) will be available on due time.  
+• Suitable production facility will be identified.  
+• Suitable packaging is available and can be handled by the production facility.  
+• The development depends on the results of the planned clinical study in dental settings.  
+The device shall be ready for commercial launch by December 2023.
+
+3 SYSTEM FEATURES AND REQUIREMENTS  
+3.1 Functional Requirements  
+The purpose of the software is to allow the user to choose a treatment and produce a laser output power based on the treatment parameters. According to this, the following functional requirements have been detected: 
+Working requirements: 
+ID: FR1 
+Title: Turn ON the device  
+Description: To turn ON the laser pen, the user presses and holds the first button (labeled as ON/OFF button – bottom of the pen) until the LED turns green.  
+Depth: None  
+
+Edge Cases  
+If the LED fails to turn green when the device is turned on, the software should alert the user with a specific error message or sound.
+
+ID: FR2 
+Title: Activate the protocol n°1  
+Description: The user presses once the second button (on the top of the pen), and the LED light turns Blue. Laser output lasts for 10 seconds, then the Blue LED Light turns off.  
+Depth: FR1  
+
+Edge Cases  
+If the LED fails to turn blue when the protocol is activated, the software should alert the user with a specific error message or sound.
+
+ID: FR3 
+Title: Activate the protocol n°2  
+Description: The user presses twice the second button (on the top of the pen), and the LED light turns Purple. Laser output lasts for 20 seconds, then the Purple LED Light turns off.  
+Depth: FR1 
+
+Edge Cases  
+If the LED fails to turn purple when the protocol is activated, the software should alert the user with a specific error message or sound.
+
+ID: FR4 
+Title: Turn OFF the device  
+Description: To turn OFF the laser pen, the user presses and holds the first button (labeled as ON/OFF button - bottom of the pen) until the green LED disappears.   
+Depth: FR1 
+
+Edge Cases  
+If the LED fails to turn off when the device is turned off, the software should alert the user with a specific error message or sound.
+
+ID: FR5 
+Title: Shutdown time after inactivity  
+Description: After not using the laser pen for 5 minutes, the device switches off. 
+Depth: FR1 
+
+Battery requirements:  
+ID: FR6 
+Title: Low battery signal (during READY phase)  
+Description: In cases where the battery is running low during READY phase, the user can see the LED indicators of the unit will begin an alternate flash accompanied by an audible signal. 
+Depth: FR1  
+
+Edge Cases  
+If the low battery signal fails to turn on, the software should alert the user with a specific error message or sound.
+
+ID: FR7 
+Title: Need to change the battery  
+Description: It will no longer be possible to return to the OPERATE phase until the battery is replaced with a charged one.  
+Depth: FR6 
+
+Edge Cases  
+If the software fails to recognize that a battery has been replaced and does not return to the OPERATE phase, the software should alert the user with a specific error message or sound.
+
+ID: FR8 
+Title: Low battery signal (during OPERATE phase)  
+Description: In cases where the battery is running low during OPERATE phase, the system will remain in operation for the time set by the treatment and then return to READY mode.  
+Depth: FR1 
+
+System errors requirements: 
+ID: FR9 
+Title: Electrical error  
+Description: In case of malfunctions inside the unit and/or electrical errors, Fibercure will stop the emission automatically, and the LED indicators will start a simultaneous red flashing.  
+Depth: FR1  
+
+Edge Cases  
+If the LED indicators fail to start red flashing in case of an electrical error, the software should alert the user with a specific error message or sound.
+
+3.2 Non-Functional Requirements  
+• Reliability: The software shall have a mean-time-to-failure (MTTF) of 1,000 hours with a confidence level of 95%.  
+• Maintainability: The software shall be maintainable. The maintainability index shall be at least 75% based on the metrics calculated from the source code.  
+• Cybersecurity: The software shall be designed and tested to meet cybersecurity requirements to ensure secure transmission and processing of data.
+
+3.3 Performance Requirements  
+• Laser output power levels: The laser output power shall be 500 mW, ± 10%.  
+• Stability and accuracy: The laser output power shall be stable and accurate throughout the treatment duration. 
+
+3.4 Error handling  
+The functional requirements shall include detailed error handling scenarios and responses in abnormal situations. For example, "If the LED fails to turn on when the device is turned on, the software should alert the user with a specific error message or sound."
+
+3.5 Software Quality Assurance  
+Software quality assurance will be implemented by testing and verification/validation processes. These will include unit, integration, system, and acceptance testing.
+
+3.6 Software Lifecycle  
+Software lifecycle processes will beUpdated SRS_DOC:
+
+1. Introduction 
+This SRS document outlines the requirements for the software embedded in the Fibercure laser pen used in dental treatments. The software is developed according to IEC 62304 and IEC 62366. The software functions as a closed system and handles no sensitive data.
+
+2. Functional Requirements
+The software will accept inputs in the form of user button presses, and the expected outputs are LED light changes and laser output. The exact format, timing, and other specifications of these inputs and outputs will be documented in the detailed design description document.
+
+2.1 General Requirements
+The software shall comply with the safety requirements identified during the risk management process outlined in ISO 14971. Functional requirements shall be traced to the hazards and risks identified during risk management.
+
+2.2 Performance Requirements
+The software shall output laser power levels with stability and accuracy as specified in the product specification. The laser emission will automatically stop in abnormal situations, and the LED indicators will flash red simultaneously.
+
+2.3 Error Handling
+The software will detect errors in the system temperatures inside the machine and put the system into a safeguard mode, followed by flashing of the LED indicators. The software will alert the user with a specific error message or sound in case of abnormal situations.
+
+3. External Interface Requirements
+There will be no user interface other than the buttons on the laser pen, and no hardware or software interfaces with external components.
+
+4. Non-Functional Requirements
+4.1 Reliability
+The software shall meet reliability requirements as specified in the product specification.
+
+4.2 Maintainability
+The software shall meet maintainability requirements as specified in the product specification.
+
+4.3 Supportability
+The software shall meet supportability requirements as specified in the product specification.
+
+4.4 Cybersecurity
+The software shall meet cybersecurity requirements as specified in the product specification.
+
+4.5 Usability
+The software shall meet usability requirements as specified in the product specification, taking into consideration the operator who will have to use it.
+
+4.6 Software Quality Assurance
+The software quality assurance shall be implemented as specified in the product specification, including testing and verification/validation processes.
+
+4.7 Software Lifecycle
+The software lifecycle processes shall be implemented as specified in the product specification, including design control and configuration management.
+
+5. User Needs
+The software shall meet the specific needs and requirements of licensed dental professionals and trained dental assistants who will use the device.
+
+6. Charging Base Requirements
+The charging base LEDs shall turn green when a battery is being charged. The calibration of the laser beam shall be indicated by a green LED for positive calibration and a red LED for negative calibration.
+
+7. Conclusion
+This updated SRS document specifies the functional requirements of the software embedded in the Fibercure laser pen used in dental treatments, as well as the non-functional requirements, charging base requirements, and user needs. It also outlines the requirements for external interfaces and error handling scenarios. The document ensures compliance with IEC 62304 and ISO 14971 standards.
