@@ -1,0 +1,155 @@
+,0,1
+0,Term/Abbreviation,Description
+1,SRS,Software requirement specifications
+2,SOUP,Software of unknown provenience 
+3,Endofill,"Is a low-viscosity, injectable, hydrophilic, light-curable endodontic sealer"
+4,ID:,FR1
+5,Title:,Turn ON the device
+6,Description:,"To turn ON the laser pen, the user presses and holds the first button (labelled as ON/OFF button – bottom of the pen) until the LED turns green."
+7,Depth:,None
+8,Edge Cases,
+9,Error Handling,
+10,How to respond in abnormal situations,"For example, ""If the LED fails to turn green when the device is turned on, the software should alert the user with a specific error message or sound."""
+11,ID:,FR2
+12,Title:,Activate the protocol n°1
+13,Description:,"The user press once the second button (on the top of the pen) and the LED light turns Blue.
+Laser output last for 10 seconds then the Blue LED Light turns off."
+14,Depth:,FR1
+15,Edge Cases,
+16,Error Handling,
+17,How to respond in abnormal situations,"For example, ""If the LED fails to turn green when the device is turned on, the software should alert the user with a specific error message or sound."""
+18,ID:,FR3
+19,Title:,Activate the protocol n°2
+20,Description:,"The user presses twice the second button (on the top of the pen) and the LED light turns Purple.
+Laser output last for 20 seconds then the Purple LED Light turns off."
+21,Depth:,FR1
+22,Edge Cases,
+23,Error Handling,
+24,How to respond in abnormal situations,"For example, ""If the LED fails to turn green when the device is turned on, the software should alert the user with a specific error message or sound."""
+25,ID:,FR4
+26,Title:,Turn OFF the device
+27,Description:,"To turn OFF the laser pen, the user presses and holds the first button (labelled as ON/OFF button - bottom of the pen) until the green LED disappears."
+28,Depth:,FR1
+29,Edge Cases,
+30,Error Handling,
+31,How to respond in abnormal situations,"For example, ""If the LED fails to turn green when the device is turned on, the software should alert the user with a specific error message or sound."""
+32,ID:,FR5
+33,Title:,Shutdown time after inactivity
+34,Description:,"After not using the laser pen for 5 minutes, the device switches off."
+35,Depth:,FR1
+36,ID:,FR6
+37,Title:,Low battery signal (during READY phase)
+38,Description:,"In cases where the battery is running low during READY phase, the user can see the LED indicators of the unit will begin an alternate flash accompanied by an audible signal."
+39,Depth:,FR1
+40,Edge Cases,
+41,Error Handling,
+42,How to respond in abnormal situations,"For example, ""If the LED fails to turn green when the device is turned on, the software should alert the user with a specific error message or sound."""
+43,ID:,FR7
+44,Title:,Need to change the battery
+45,Description:,It will no longer be possible to return to the OPERATE phase until the battery is replaced with a charged one.
+46,Depth:,FR6
+47,Edge Cases,
+48,Error Handling,
+49,How to respond in abnormal situations,"For example, ""If the LED fails to turn green when the device is turned on, the software should alert the user with a specific error message or sound."""
+50,ID:,FR8
+51,Title:,Low battery signal (during OPERATE phase)
+52,Description:,"In cases where the battery is running low during OPERATE phase, the system will remain in operation for the time set by the treatment and then return to READY mode."
+53,Depth:,FR1
+54,Edge Cases,
+55,Error Handling,
+56,How to respond in abnormal situations,"For example, ""If the LED fails to turn green when the device is turned on, the software should alert the user with a specific error message or sound."""
+57,ID:,FR9
+58,Title:,Electrical error
+59,Description:,"In case of malfunctions inside the unit and/or electrical errors, Fibercure will stop the emission automatically and the LED indicators will start a simultaneous red flashing."
+60,Depth:,FR1
+61,Edge Cases,
+62,Error Handling,
+63,How to respond in abnormal situations,"For example, ""If the LED fails to turn green when the device is turned on, the software should alert the user with a specific error message or sound."""
+64,ID:,FR10
+65,Title:,System lock
+66,Description:,"In the event that the minimum internal electrical self-control requirements are not reached (for example laser current outside the allowed limits), Fibercure will stop the laser emission automatically and the LED indicators will start a simultaneous red flashing."
+67,Depth:,FR1
+68,Edge Cases,
+69,Error Handling,
+70,How to respond in abnormal situations,"For example, ""If the LED fails to turn green when the device is turned on, the software should alert the user with a specific error message or sound."""
+71,ID:,FR11
+72,Title:,Overheating/temperature error
+73,Description:,This type of error appears when system temperatures inside the machine is out of working range. The system independently goes into a safeguard mode followed by an alternate flashing of the LED indicators on the surface of the device.
+74,Depth:,FR1
+75,Edge Cases,
+76,Error Handling,
+77,How to respond in abnormal situations,"For example, ""If the LED fails to turn green when the device is turned on, the software should alert the user with a specific error message or sound."""
+78,,
+79,ID:,FR12
+80,Title:,Charging battery - LED indicator
+81,Description:,The charging base have LEDs that turns green when a battery is put in charge.
+82,Depth:,None
+83,Edge Cases,
+84,Error Handling,
+85,How to respond in abnormal situations,"For example, ""If the LED fails to turn green when the device is turned on, the software should alert the user with a specific error message or sound."""
+86,ID:,FR13
+87,Title:,Calibration of laser beam - LED indicator
+88,Description:,"The user shoots the laser beam through the optical tip on the charging base calibrator. 
+If the calibration is positive, the LED turns green. 
+If the calibration is negative, the LED turns red."
+89,Depth:,None
+90,Edge Cases,
+91,Error Handling,
+92,How to respond in abnormal situations,"For example, ""If the LED fails to turn green when the device is turned on, the software should alert the user with a specific error message or sound."""
+93,,
+94,User interfaces,"The key to application usability that includes content presentation, application navigation, and user assistance, among other components."
+95,Hardware interfaces,"The characteristics of each interface between the software and hardware components of the system, such as supported device types and communication protocols.  "
+96,Software interfaces,"The connections between your product and other software components, including databases, libraries, and operating systems. "
+97,Communication interfaces,"The requirements for the communication function your product will use, like emails or embedded forms."
+98,Inputs and Outputs,"The software will accept inputs in the form of user button presses, with the expected outputs being LED light changes and laser output. The exact format, timing, and other specifications of these inputs and outputs will be documented in the detailed design description document."
+99,ID:,EIR1
+100,Title:,Use of buttons
+101,Description:,The user interface is represented by buttons positioned on the laser pen that the user presses to turn it on/off and perform the desired treatment.
+102,Depth:,None
+103,ID:,EIR2
+104,Title:,Use of LEDs
+105,Description:,The device is characterized by LEDs indicators that helps the user on understanding the functioning of the device.
+106,Depth:,None
+107,ID:,NFR1
+108,Title:,Security
+109,Description:,Related to the compromise of sensitive information: the device is not intended to handle sensitive data. The software has to be developed according to IEC 62304 and IEC 62366.
+110,Depth:,None
+111,ID:,NFR2
+112,Title:,Compatibility
+113,Description:,"Since the software is embedded into the medical device and so it’s a close system, it doesn’t need to be supported by an operating system. Therefore, this section is not applicable."
+114,Depth:,None
+115,ID:,NFR3
+116,Title:,Scalability
+117,Description:,"The microchip used into the Fibercure laser pen is dsPIC33CK256MP508.
+Microchip’s dsPIC33CK family of digital signal controllers (DSCs) feature a 100 MHz dsPIC® DSC core with integrated DSP and enhanced on-chip peripherals. These DSCs enable the design of digital power, motor control, advanced sensing and control, high-performance general-purpose and robust applications.
+The DSCs feature advanced analog for advanced sensor interfacing designs. Offering real-time deterministic performance, the DSCs enable high-performance control applications. The rich feature set in this family of devices also make this family a very good fit for high-performance general-purpose and robust applications.
+The dsPIC33CK product family has many hardware features that help simplify functional safety certifications for ASIL-B and SIL-2 focused automotive and industrial safety-critical applications
+
+The microcontroller used has an internal flash which is used only as program memory: during the life of the product no data is saved and therefore no writing takes place.
+As regards the life time it refers to the retention value TRETD (Characteristic Retention). This value is identified by the manufacturer as equal to 20 years in the full range of voltage and temperature use."
+118,Depth:,None
+119,ID:,NFR4
+120,Title:,Usability
+121,Description:,"Usability will be evaluated on the ability to interact with the device in relation to the function to be obtained and taking into account the operator who will have to use it.
+All the possible situations and scenarios in which a typical operator can find himself and can interact with the equipment in an intuitive way and without having specific knowledge of his field, particular acumen or dexterity will be taken into consideration. Further considerations have been made in the usability documentation."
+122,Depth:,None
+123,ID:,NFR
+124,Title:,Performance
+125,Description:,
+126,Depth:,
+127,ID:,NFR
+128,Title:,Maintainability
+129,Description:,
+130,Depth:,
+131,ID:,NFR
+132,Title:,Supportability
+133,Description:,
+134,Depth:,None
+135,ID:,NFR
+136,Title:,Reliability
+137,Description:,
+138,Depth:,None
+139,ID:,NFR
+140,Title:,Cybersecurity
+141,Description:,
+142,Depth:,None

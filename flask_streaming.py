@@ -5,9 +5,11 @@ import time
 from update_doc_stream import update_deficiencies
 app = Flask(__name__)
 
+
 @app.route('/stream', methods=['GET'])
 def stream_conversation():
     start_time = time.time()
+
     def generate():
         SRS_Text = open("raw_text.txt").read()
         tt_encoding = tiktoken.get_encoding("cl100k_base")
@@ -32,9 +34,11 @@ def stream_conversation():
                     chunk_message = chunk['choices'][0]['delta']["content"]
                 collected_messages.append(chunk_message)  # save the message
                 print(str(chunk_message))
-                yield "ok"
 
-    return Response(generate(), mimetype='text/event-stream')
+                yield str(chunk_message)  # yield the message within the generate() function
+
+    return app.response_class(generate(), mimetype='text/event-stream')
+
 
 if __name__ == '__main__':
     app.run()
