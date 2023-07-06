@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "122bbd8a-9f8d-44d5-930b-5bdebd56d967",
+		"name": "fastApi_medical",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23102153"
+	},
+	"item": [
+		{
+			"name": "UploadDoc",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Linuxbean/Downloads/11.3_SRS Software Requirement Specification - EDITED with Comments from JEC.docx"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/uploadDoc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"uploadDoc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_deficiencies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/deficiencies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"deficiencies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateDoc",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/updateDoc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"updateDoc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_file_status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/check_file_status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"check_file_status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "convertDoc",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
