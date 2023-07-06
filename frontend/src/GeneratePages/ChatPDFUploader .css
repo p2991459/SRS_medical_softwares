@@ -1,0 +1,201 @@
+.header-buttons button {
+  border-color: #bccadf;
+  background: none;
+  height: 28px;
+  padding: 0 12px;
+}
+
+.padding {
+  padding: 28px 85px 28px 85px;
+}
+
+img{
+  max-width: 100%;
+  height: fit-content;
+}
+
+@media (min-width: 560px) {
+  .desktop-only.flex {
+    display: flex;
+  }
+}
+
+.ant-upload-wrapper {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  list-style: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.ant-upload-wrapper .ant-upload-drag {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px dashed #d9d9d9;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.ant-upload-wrapper .ant-upload-drag .ant-upload-btn {
+  display: table;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+.ant-upload-wrapper .ant-upload-drag .ant-upload {
+  padding: 16px 0;
+}
+
+.ant-upload-wrapper .ant-upload input[type="file"] {
+  cursor: pointer;
+}
+
+.ant-upload-wrapper .ant-upload-drag .ant-upload-drag-container {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.ant-upload-wrapper .ant-upload-drag p.ant-upload-drag-icon {
+  margin-bottom: 16px;
+}
+
+.ant-upload-wrapper .ant-upload-drag p.ant-upload-drag-icon .anticon {
+  color: #1677ff;
+  font-size: 48px;
+}
+
+.anticon {
+  display: inline-block;
+  color: inherit;
+  font-style: normal;
+  line-height: 0;
+  text-align: center;
+  text-transform: none;
+  vertical-align: -0.125em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.anticon svg {
+  display: inline-block;
+}
+
+.anticon>* {
+  line-height: 1;
+}
+
+.ant-upload-wrapper .ant-upload-drag p.ant-upload-text {
+  margin: 0 0 4px;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 16px;
+}
+
+.color {
+  color: white !important;
+}
+
+.stylebuttton1 {
+  background-color: #2566e8;
+  color: white;
+  padding: 6px;
+  cursor: pointer;
+  width: 110px;
+  margin-top: 0px;
+  margin-left: -179px;
+}
+
+.a {
+  margin-left: -90px;
+  margin-top: 30px;
+}
+
+progress {
+  width: 100px;
+  height: 10px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 10px;
+  background-color: #e0e0e0;
+  overflow: hidden;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #e0e0e0;
+}
+
+progress::-webkit-progress-value {
+  background-color: #007bff;
+  /* Replace with your desired color */
+}
+
+progress::-moz-progress-bar {
+  background-color: #007bff;
+  /* Replace with your desired color */
+}
+
+
+
+.upload-box>p {
+  text-align: center;
+  font-weight: 500;
+  margin-top: -2px;
+}
+
+img {
+  width: 100%;
+}
+
+.icon {
+  width: 90px;
+  height: 90px;
+}
+
+.upload-box {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 7px 7px 12px rgba(0, 0, 0, 0, 05);
+}
+
+.upload-box form{
+  height: 250px;
+  display: flex;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 5px;
+  border: 2px dashed #0086fe;
+
+}
+
+
+
+form :where(i, p) {
+  color: #0086fe;
+}
+
+form i {
+  font-size: 50px;
+}
+
+form p {
+  font-size: 16px;
+  margin-top: -15px;
+  margin-bottom: 8px;
+}
