@@ -3,7 +3,6 @@ import DocViewer from "react-doc-viewer";
 
 function DashboardCard08() {
   const ViewData = localStorage.getItem("ViewPdf");
-  //  console.log("ViewData", ViewData);
  
 
   return (

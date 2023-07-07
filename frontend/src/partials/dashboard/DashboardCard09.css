@@ -64,3 +64,36 @@
     height: 24px;
     animation: spin 1s linear infinite;
 }
+
+@keyframes progressAnimation {
+    0% {
+        width: 0;
+        background-color: #3182ce;
+    }
+
+    100% {
+        width: 100%;
+        background-color: #63b3ed;
+    }
+}
+
+.animate-progress {
+    animation: progressAnimation 8s linear forwards;
+}
+
+.animate-progress:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: #3182ce;
+    animation: resetAnimation 0.1s linear forwards;
+}
+
+@keyframes resetAnimation {
+    to {
+        width: 100%;
+    }
+}

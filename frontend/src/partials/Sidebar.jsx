@@ -4,7 +4,7 @@ import SidebarLinkGroup from "./SidebarLinkGroup";
 import "./Sidebar.css";
 
 
-function Sidebar({ sidebarOpen, setSidebarOpen, getResponseData, showDownloadButton }) {
+function Sidebar({ sidebarOpen, setSidebarOpen, getResponseData, showDownloadButton, CardData, progressBarData }) {
   localStorage.removeItem("chat");
   const [loading, setLoading] = useState(false);
   const [loadingData, setLoadingData] = useState(false);
@@ -14,14 +14,16 @@ function Sidebar({ sidebarOpen, setSidebarOpen, getResponseData, showDownloadBut
 
   const handleSubmit = () => {
     setLoading(true);
-    fetch("http://127.0.0.1:8000/api/deficiencies")
+    progressBarData(true)
+    fetch("http://localhost:8000/api/deficiencies")
       .then((response) => response.json())
       .then((data) => {
         // Process the data received from the API
-        // console.log("Defecencies",data.deficiencies_found);
-        getResponseData(data.deficiencies_found);
-        setLoading(false);
-        setDeficienciesLoaded(true);
+          getResponseData(data.deficiencies_found);
+          progressBarData(false)
+          setLoading(false);
+          setDeficienciesLoaded(true);
+        
       })
       .catch((error) => {
         // Handle any errors that occur during the fetch request
@@ -31,20 +33,27 @@ function Sidebar({ sidebarOpen, setSidebarOpen, getResponseData, showDownloadBut
 
   const handleSubmitData = () => {
     setLoadingData(true);
-    fetch("http://127.0.0.1:8000/api/updateDoc")
+    fetch("http://localhost:8000/api/updateDoc")
       .then((response) => response.json())
       .then((data) => {
         // Process the data received from the API
-        console.log("Defecencies", data.message);
         if (data.message === "Updating the SRS DOC") {
+            CardData(true)
           //----------------- Fourth Check File API Call -----------------//
-          fetch("http://127.0.0.1:8000/api/check_file_status")
+          fetch("http://localhost:8000/api/check_file_status",{
+            headers: {
+              method: 'GET'
+            }
+          })
             .then((response) => response.json())
-            .then((data) => {
-              console.log("checkFile", data.file_created);
-              if (data.file_created === true) {
-              setLoadingData(false);
-              showDownloadButton(true);
+            .then((res) => {
+               console.log("checkFile", res.file_name);
+              if (res.file_created === true) {
+                localStorage.setItem("Docx",res.file_name)
+                setTimeout(() => {
+                  setLoadingData(false);
+                  showDownloadButton(true);
+                }, 9000);
             }
             })
             .catch((error) => {
@@ -121,7 +130,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen, getResponseData, showDownloadBut
       <div
         id="sidebar"
         ref={sidebar}
-        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-slate-800 p-4 transition-all duration-200 ease-in-out ${
+        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-slate-800 p-4 transition-all duration-200 ease-in-out ${
           sidebarOpen ? "translate-x-0" : "-translate-x-64"
         }`}
       >
@@ -297,6 +306,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen, getResponseData, showDownloadBut
                                 padding: "8px",
                                 width: "130px",
                                 textAlign: "center",
+                                width: "100%"
                               }}
                               className="rounded-md text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 "
                             >

@@ -77,7 +77,7 @@ def check_file_status():
     files = os.listdir(directory)
     latest_file = max(files, key=lambda f: os.path.getctime(os.path.join(directory, f)))
     file_path = os.path.join('static', 'output_document.docx')  # Adjust the file name and extension
-    file_path_error = os.path.join('static', 'error.txt')
+    file_path_error = os.path.join('static', 'error.docx')
     if os.path.exists(file_path) or os.path.exists(file_path_error):
         return {'file_created': True,'file_name': f"{HOST_URL}/static/{latest_file}"}
     else:
