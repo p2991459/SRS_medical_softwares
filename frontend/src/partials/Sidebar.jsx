@@ -47,7 +47,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen, getResponseData, showDownloadBut
           })
             .then((response) => response.json())
             .then((res) => {
-               console.log("checkFile", res.file_created);
+               console.log("checkFile", res.file_name);
               if (res.file_created === true) {
                 localStorage.setItem("Docx",res.file_name)
                 setTimeout(() => {
