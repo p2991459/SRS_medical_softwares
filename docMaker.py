@@ -7,7 +7,7 @@ import logging
 import ast
 import re
 from colorama import Fore, Style
-
+from docx.shared import RGBColor
 # Create a custom formatter
 class ColorFormatter(logging.Formatter):
     def format(self, record):
@@ -126,8 +126,21 @@ class DocMaster:
             for index, cell_data in enumerate(row):
                 try:
                     cell = next(cells)
-                    cell.text = cell_data
+                    if cell.text != cell_data:
+                        cell.text = cell_data
+                        for paragraph in cell.paragraphs:
+                            for run in paragraph.runs:
+                                font = run.font
+                                font.color.rgb = RGBColor(0x00, 0x80, 0x00)  # Green color
+                    else:
+                        cell.text = cell_data
                 except:
-                    cells[index].text = cell_data
+                    cell = cells[index]
+                    cell.text = cell_data
+                    for paragraph in cell.paragraphs:
+                        for run in paragraph.runs:
+                            font = run.font
+                            font.color.rgb = RGBColor(0x00, 0x80, 0x00)  # Green color
+
 
 
