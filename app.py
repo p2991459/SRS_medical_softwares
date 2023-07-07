@@ -68,6 +68,7 @@ def deficiancies():
 async def DocUpdate(background_tasks: BackgroundTasks):
     docAI = DocAI()
     background_tasks.add_task(docAI.updateDoc)
+
     return {"message": "Updating the SRS DOC"}
 
 @app.get('/api/check_file_status')
