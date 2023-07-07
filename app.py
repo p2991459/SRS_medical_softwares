@@ -78,7 +78,7 @@ def check_file_status():
     file_path = os.path.join('static', 'output_document.docx')  # Adjust the file name and extension
     file_path_error = os.path.join('static', 'error.txt')
     if os.path.exists(file_path) or os.path.exists(file_path_error):
-        return {'file_created': True,'file_name': latest_file}
+        return {'file_created': True,'file_name': f"{HOST_URL}/static/{latest_file}"}
     else:
         return {'file_created': False}
 
