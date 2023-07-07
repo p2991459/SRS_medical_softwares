@@ -11,6 +11,9 @@ function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [responsedData, setresponsedData] = useState("");
   const [showDownload, setShowDownload] = useState("");
+  const [cardComponentData, setCardComponentData] = useState("");
+  const [progressComponent, setProgressComponent] = useState("");
+
 
 
   const getResponseData = (data) =>{
@@ -21,10 +24,19 @@ function Dashboard() {
       setShowDownload(data)
   }
 
+  const CardData = (data) =>{
+    setCardComponentData(data)
+  }
+
+  const progressBarData = (data) =>{
+    // console.log("progressComponent",progressComponent)
+    setProgressComponent(data)
+  }
+
   return (
     <div className="flex h-screen overflow-hidden">
       {/* Sidebar */}
-      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} getResponseData={getResponseData} showDownloadButton={showDownloadButton} />
+      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} getResponseData={getResponseData} showDownloadButton={showDownloadButton} CardData={CardData} progressBarData={progressBarData} />
 
       {/* Content area */}
       <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
@@ -42,7 +54,7 @@ function Dashboard() {
             {/* Cards */}
             <div className="grid grid-cols-12 gap-2">
               <DashboardCard08 />
-              <DashboardCard09 responsedData={responsedData}  showDownload={showDownload} />
+              <DashboardCard09 responsedData={responsedData}  showDownload={showDownload} cardComponentData={cardComponentData} progressComponent={progressComponent} />
             </div>
           </div>
         </main>

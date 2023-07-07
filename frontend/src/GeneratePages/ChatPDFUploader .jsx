@@ -9,10 +9,16 @@ function ChatPDFUploader() {
   const fileInputRef = useRef(null);
 
   const handlePdfFileChange = (e) => {
-    let selectedFile = e.target.files[0];
-    setPdfFile(selectedFile);
-    // console.log("selectedFile", selectedFile);
-  };
+  let selectedFile = e.target.files[0];
+  setPdfFile(selectedFile)
+  // const reader = new FileReader();
+  // reader.onload = (event) => {
+  //   const base64Data = event.target.result;
+  //   localStorage.setItem("Docx", base64Data);
+  // };
+  // reader.readAsDataURL(selectedFile);
+};
+
 
   const handlePdfFileSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +26,6 @@ function ChatPDFUploader() {
     var formdata = new FormData();
     formdata.append("file", pdfFile);
 
-    // console.log("formdata",formdata)
 
     const interval = setInterval(() => {
       setUploadProgress((prevProgress) => prevProgress + 10);
@@ -32,12 +37,10 @@ function ChatPDFUploader() {
         body: formdata,
       };
 
-      // console.log("formdata",requestOptions)
 
-      fetch("http://127.0.0.1:8000/api/uploadDoc", requestOptions)
+      fetch("http://localhost:8000/api/uploadDoc", requestOptions)
         .then((response) => response.json())
         .then((data) => {
-          //   console.log("first",data)
           if (data.message === "File uploaded successfully") {
             //-------- Convert docx to pdf ----------//
             var requestOptions = {
@@ -46,12 +49,11 @@ function ChatPDFUploader() {
             };
             fetch("http://127.0.0.1:8000/api/DocToPdf", requestOptions)
               .then((response) => response.json())
-              .then((data) => {
-                console.log("ConvertPdf", data.message);
-                if (data.message === true) {
+              .then((res) => {
+                if (res.message === true) {
                   clearInterval(interval);
                   setUploadProgress(0);
-                  localStorage.setItem("ViewPdf", data.pdf_path);
+                  localStorage.setItem("ViewPdf", res.pdf_path);
                   localStorage.setItem("PdfName", pdfFile.name);
                   navigate("/chat");
                 }
@@ -181,7 +183,7 @@ function ChatPDFUploader() {
               name="file"
               hidden
               ref={fileInputRef}
-              accept=".doc, .docx, .pdf"
+              accept=".doc, .docx"
               onChange={handlePdfFileChange}
             />
             <div className="icon" onClick={() => fileInputRef.current.click()}>
