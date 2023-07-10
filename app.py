@@ -67,6 +67,15 @@ def deficiancies():
 @app.get("/api/updateDoc")
 async def DocUpdate(background_tasks: BackgroundTasks):
     docAI = DocAI()
+    try:
+        os.remove("./static/output_document.docx")
+
+    except FileNotFoundError as e:
+        pass
+    try:
+        os.remove("./static/error.docx")
+    except FileNotFoundError as e:
+        pass
     background_tasks.add_task(docAI.updateDoc)
 
     return {"message": "Updating the SRS DOC"}

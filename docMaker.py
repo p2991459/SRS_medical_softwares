@@ -33,10 +33,11 @@ class DocAI:
             if response[1]:
                 return response
         except openai.error.InvalidRequestError as e:
+            print(e)
             logging.warning("ERROR IN GENERATING RESPONSE DUE TO TOKEN LIMIT. REDUCING CONTEXT LENGTH.......")
             print(f"Extracted table data is {table_data}. Table is too large....ending the process. ")
-            open("./static/error.docx","w").write(str(e))
-            return "ending the task",False
+            open("./static/error.docx","w",encoding="utf-8").write(str(e))
+            return "Ending the task",False
     def ReduceTokens(self):
         pass
     def saveLogs(self):
@@ -45,17 +46,6 @@ class DocAI:
         pass
     def updateDoc(self):
         input_file = "SRS.docx"
-        try:
-            os.remove("./static/output_document.docx")
-
-        except FileNotFoundError as e:
-            print("Finding error.docx...............")
-            try:
-                os.remove("./static/error.docx")
-                print("Deleting error.docx")
-            except FileNotFoundError as e:
-                pass
-            pass
         doc = Document(input_file)
         paragraphs = doc.paragraphs
         tables = doc.tables

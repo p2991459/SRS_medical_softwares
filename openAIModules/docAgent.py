@@ -1,6 +1,8 @@
 import openai
+import tiktoken
 
-initial_prompt = [
+
+conversation = [
     {
         "role": "system",
         "content": '''You will be provided the table of an SRS DOC, Your job is improve Software requirement specification based on IEC62304 standards from the listed deficiencies.You must modify the text and insert some valuable information in empty or None cell. Every table is independent of the SRS doc so you should not remove valubale information also do not inculde the term such as `according to IEC 62304 , IEC 62304 or similar term like this. Always give answer in given table format.
@@ -27,28 +29,37 @@ You should remember below instructions to create the output:
 
 ]
 
-
+def num_tokens_from_messages(messages, model="gpt-3.5-turbo-0301"):
+    encoding = tiktoken.encoding_for_model(model)
+    num_tokens = 0
+    for message in messages:
+        for key, value in message.items():
+            num_tokens += len(encoding.encode(value))
+    return num_tokens
+#gpt-3.5-turbo
 def agent(message):
+    model = 'gpt-3.5-turbo-0301'
     user_dict = {
         "role": "user",
         "content": message
     }
-    initial_prompt.append(user_dict)
+    conversation.append(user_dict)
+    tokens = num_tokens_from_messages(conversation)
+    print(f"Token number of tokens received from conversation: {tokens}")
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
-        messages=initial_prompt,
-        temperature=.3
+        messages=conversation,
+        temperature=.3,
+        max_tokens = 2000
     )
     reply = response['choices'][0]['message']['content']
-    # list_to_update_deficiencies.pop()
+    conversation.pop()
     return reply
 
 
 
 
 if __name__ == '__main__':
-    table_text = open("../play_with_doc/table_text.txt").read()
-    prompt = f"table_text: {table_text}"
-    print(agent(table_text))
+    pass
 
 
