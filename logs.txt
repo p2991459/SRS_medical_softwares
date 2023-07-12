@@ -131,3 +131,159 @@
 [12:07:2023 18:13:47] - INFO - [docMaker]: Inserting table data into OPENAI.......
 
 [12:07:2023 18:13:47] - INFO - [docMaker]: Getting output from OPENAI......
+
+[12:07:2023 18:13:56] - INFO - [docMaker]: Successfully Got the output from OPENAI.
+
+[12:07:2023 18:13:56] - INFO - [docMaker]: There can be multiple output tables so extract each raw table, here is the length of raw tables: 1
+
+[12:07:2023 18:13:56] - INFO - [docMaker]: Typecasting table using ast......
+
+[12:07:2023 18:13:56] - INFO - [docMaker]: Created table using ast.........
+
+[12:07:2023 18:13:56] - INFO - [docMaker]: 
+=======================================================
+
+
+[12:07:2023 18:13:56] - INFO - [docMaker]: Entering in table: 6
+
+[12:07:2023 18:13:56] - INFO - [docMaker]: Getting new table data from the SRS DOC....
+
+[12:07:2023 18:13:56] - INFO - [docMaker]: Inserting table data into OPENAI.......
+
+[12:07:2023 18:13:56] - INFO - [docMaker]: Getting output from OPENAI......
+
+[12:07:2023 18:14:00] - INFO - [docMaker]: Successfully Got the output from OPENAI.
+
+[12:07:2023 18:14:00] - INFO - [docMaker]: There can be multiple output tables so extract each raw table, here is the length of raw tables: 1
+
+[12:07:2023 18:14:00] - INFO - [docMaker]: Typecasting table using ast......
+
+[12:07:2023 18:14:00] - INFO - [docMaker]: Created table using ast.........
+
+[12:07:2023 18:14:00] - INFO - [docMaker]: 
+=======================================================
+
+
+[12:07:2023 18:14:00] - INFO - [docMaker]: Entering in table: 7
+
+[12:07:2023 18:14:00] - INFO - [docMaker]: Getting new table data from the SRS DOC....
+
+[12:07:2023 18:14:00] - INFO - [docMaker]: Inserting table data into OPENAI.......
+
+[12:07:2023 18:14:00] - INFO - [docMaker]: Getting output from OPENAI......
+
+[12:07:2023 18:14:09] - INFO - [docMaker]: Successfully Got the output from OPENAI.
+
+[12:07:2023 18:14:09] - INFO - [docMaker]: There can be multiple output tables so extract each raw table, here is the length of raw tables: 1
+
+[12:07:2023 18:14:09] - INFO - [docMaker]: Typecasting table using ast......
+
+[12:07:2023 18:14:09] - INFO - [docMaker]: Created table using ast.........
+
+[12:07:2023 18:14:09] - INFO - [docMaker]: 
+=======================================================
+
+
+[12:07:2023 18:14:09] - INFO - [docMaker]: Entering in table: 8
+
+[12:07:2023 18:14:09] - INFO - [docMaker]: Getting new table data from the SRS DOC....
+
+[12:07:2023 18:14:09] - INFO - [docMaker]: Inserting table data into OPENAI.......
+
+[12:07:2023 18:14:09] - INFO - [docMaker]: Getting output from OPENAI......
+
+[12:07:2023 18:14:11] - INFO - [docMaker]: Successfully Got the output from OPENAI.
+
+[12:07:2023 18:14:11] - INFO - [docMaker]: There can be multiple output tables so extract each raw table, here is the length of raw tables: 1
+
+[12:07:2023 18:14:11] - INFO - [docMaker]: Typecasting table using ast......
+
+[12:07:2023 18:14:11] - INFO - [docMaker]: Created table using ast.........
+
+[12:07:2023 18:14:11] - INFO - [docMaker]: 
+=======================================================
+
+
+[12:07:2023 18:14:11] - INFO - [docMaker]: Entering in table: 9
+
+[12:07:2023 18:14:11] - INFO - [docMaker]: Getting new table data from the SRS DOC....
+
+[12:07:2023 18:14:11] - INFO - [docMaker]: Inserting table data into OPENAI.......
+
+[12:07:2023 18:14:11] - INFO - [docMaker]: Getting output from OPENAI......
+
+[12:07:2023 18:14:15] - INFO - [docMaker]: Successfully Got the output from OPENAI.
+
+[12:07:2023 18:14:15] - INFO - [docMaker]: There can be multiple output tables so extract each raw table, here is the length of raw tables: 1
+
+[12:07:2023 18:14:15] - INFO - [docMaker]: Typecasting table using ast......
+
+[12:07:2023 18:14:15] - INFO - [docMaker]: Created table using ast.........
+
+[12:07:2023 18:14:15] - INFO - [docMaker]: 
+=======================================================
+
+
+[12:07:2023 18:14:15] - INFO - [docMaker]: Entering in table: 10
+
+[12:07:2023 18:14:15] - INFO - [docMaker]: Getting new table data from the SRS DOC....
+
+[12:07:2023 18:14:15] - INFO - [docMaker]: Inserting table data into OPENAI.......
+
+[12:07:2023 18:14:15] - INFO - [docMaker]: Getting output from OPENAI......
+
+[12:07:2023 18:14:17] - INFO - [docMaker]: Successfully Got the output from OPENAI.
+
+[12:07:2023 18:14:17] - INFO - [docMaker]: There can be multiple output tables so extract each raw table, here is the length of raw tables: 1
+
+[12:07:2023 18:14:17] - INFO - [docMaker]: Typecasting table using ast......
+
+[12:07:2023 18:14:17] - INFO - [docMaker]: Created table using ast.........
+
+[12:07:2023 18:14:17] - INFO - [docMaker]: 
+=======================================================
+
+
+[12:07:2023 18:14:17] - INFO - [docMaker]: Entering in table: 11
+
+[12:07:2023 18:14:17] - INFO - [docMaker]: Getting new table data from the SRS DOC....
+
+[12:07:2023 18:14:17] - INFO - [docMaker]: Inserting table data into OPENAI.......
+
+[12:07:2023 18:14:17] - INFO - [docMaker]: Getting output from OPENAI......
+
+[12:07:2023 18:16:37] - INFO - [docMaker]: Successfully Got the output from OPENAI.
+
+[12:07:2023 18:16:37] - INFO - [docMaker]: There can be multiple output tables so extract each raw table, here is the length of raw tables: 1
+
+[12:07:2023 18:16:37] - INFO - [docMaker]: Typecasting table using ast......
+
+[12:07:2023 18:16:37] - INFO - [docMaker]: Created table using ast.........
+
+[12:07:2023 18:16:37] - INFO - [docMaker]: 
+=======================================================
+
+
+[12:07:2023 18:16:37] - INFO - [docMaker]: Entering in table: 12
+
+[12:07:2023 18:16:37] - INFO - [docMaker]: Getting new table data from the SRS DOC....
+
+[12:07:2023 18:16:37] - INFO - [docMaker]: Inserting table data into OPENAI.......
+
+[12:07:2023 18:16:37] - INFO - [docMaker]: Getting output from OPENAI......
+
+[12:07:2023 18:16:42] - INFO - [docMaker]: Successfully Got the output from OPENAI.
+
+[12:07:2023 18:16:42] - INFO - [docMaker]: There can be multiple output tables so extract each raw table, here is the length of raw tables: 2
+
+[12:07:2023 18:16:42] - INFO - [docMaker]: Typecasting table using ast......
+
+[12:07:2023 18:16:42] - INFO - [docMaker]: Created table using ast.........
+
+[12:07:2023 18:16:42] - INFO - [docMaker]: Typecasting table using ast......
+
+[12:07:2023 18:16:42] - INFO - [docMaker]: Created table using ast.........
+
+[12:07:2023 18:16:42] - INFO - [docMaker]: Preparing final document to save...........
+
+[12:07:2023 18:16:42] - INFO - [docMaker]: Wooo!Document Saved Successfully.

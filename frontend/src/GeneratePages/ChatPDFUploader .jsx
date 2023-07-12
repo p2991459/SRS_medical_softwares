@@ -97,7 +97,7 @@ function ChatPDFUploader() {
               color: "black",
             }}
           >
-            Chat with any PDF
+            AI tool to Update SRS DOC
           </h1>
           <div
             className="header-buttons"
@@ -192,8 +192,8 @@ function ChatPDFUploader() {
                 alt="Upload"
               />
             </div>
-            <p>Browser pdf to upload</p>
-            <h6>Pdf Name :{pdfFile.name}</h6>
+            <p>Browser document to upload</p>
+            <h6>Document Name :{pdfFile.name}</h6>
             {uploadProgress > 0 && uploadProgress < 100 && (
               <progress value={uploadProgress} max="100" />
             )}
