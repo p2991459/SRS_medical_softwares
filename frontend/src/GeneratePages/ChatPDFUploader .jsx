@@ -47,7 +47,7 @@ function ChatPDFUploader() {
               method: "GET",
               redirect: "follow",
             };
-            fetch("http://127.0.0.1:8000/api/DocToPdf", requestOptions)
+            fetch("http://localhost:8000/api/DocToPdf", requestOptions)
               .then((response) => response.json())
               .then((res) => {
                 if (res.message === true) {

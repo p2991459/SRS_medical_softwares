@@ -47,13 +47,13 @@ function Sidebar({ sidebarOpen, setSidebarOpen, getResponseData, showDownloadBut
           })
             .then((response) => response.json())
             .then((res) => {
-               console.log("checkFile", res.file_name);
+               console.log("checkFile", res.file_created);
               if (res.file_created === true) {
-                localStorage.setItem("Docx",res.file_name)
-                setTimeout(() => {
-                  setLoadingData(false);
                   showDownloadButton(true);
-                }, 9000);
+                  setLoadingData(false);
+                localStorage.setItem("Docx",res.file_name)
+                // setTimeout(() => {
+                // }, 9000);
             }
             })
             .catch((error) => {
