@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Log Stream</title>
+    <style>
+        /* Add your desired CSS styles here */
+    </style>
+</head>
+<body>
+
+    <script>
+    // Create a new EventSource object with the URL of your Flask endpoint
+    var eventSource = new EventSource("/api//log_stream");
+        console.log("Executing javascript");
+    // Event listener to handle incoming messages from the server
+    eventSource.onmessage = function(event) {
+    // Get the message data from the event
+    var message = event.data;
+    console.log("I got the message");
+    console.log(message);
+    // Display the message in the HTML element of your choice
+    var outputElement = document.getElementById("output");
+    outputElement.innerHTML += message + "<br>";
+    };
+
+    // Event listener to handle errors
+    eventSource.onerror = function(error) {
+    console.error("EventSource error:", error);
+    };
+
+    // Event listener to handle the connection being closed
+    eventSource.onclose = function() {
+    console.log("EventSource connection closed");
+    };
+    </script>
+</body>
+</html>

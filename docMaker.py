@@ -45,6 +45,7 @@ class DocAI:
                         #open("Logs.txt", "a+").write(output_from_gpt)'''
         pass
     def updateDoc(self):
+        file = open("text_file.txt", "a+")
         input_file = "SRS.docx"
         doc = Document(input_file)
         paragraphs = doc.paragraphs
@@ -58,16 +59,24 @@ class DocAI:
                 pass #TODO: paragraphs are set as it is, need to modify the structure in future
             elif "tbl" in str(element):
                 print("\n=======================================================\n")
+                file.write("\n=======================================================\n")
+                file.flush()
                 print(f"Entering in table: {tbl_counter}")
                 table_data = docExtractors.read_table(tables[tbl_counter])
                 self.log.warning("Getting new table data from the SRS DOC....")
+                file.write("Getting new table data from the SRS DOC....")
+                file.flush()
                 print(f"Inserting table data into OPENAI.......")
                 print(f"Getting output from OPENAI......")
+                file.write("Getting output from OPENAI......")
+                file.flush()
                 output_from_gpt = self.GptResponse(table_data)[0]
                 if output_from_gpt == "ending the task":
                     print("Task Ended.")
                     return "Task ended"
                 print(f"Successfully Got the output from OPENAI.")
+                file.write("Successfully Got the output from OPENAI.")
+                file.flush()
                 pattern = r'\[\[.*'
                 matches = re.findall(pattern, output_from_gpt, re.DOTALL)
                 if len(matches) != 0:

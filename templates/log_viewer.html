@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Log Stream</title>
+    <style>
+        /* Add your desired CSS styles here */
+    </style>
+</head>
+<body>
+    <pre id="log-output"></pre>
+
+<script>
+    var eventSource = new EventSource("/api/log_stream");
+    console.log("Executing JavaScript");
+
+    eventSource.onmessage = function(event) {
+        var message = event.data;
+        console.log("I got the message");
+        console.log(message);
+
+        var outputElement = document.getElementById("log-output");
+        outputElement.innerHTML += message + "<br>";
+    };
+
+    eventSource.onerror = function(error) {
+        console.error("EventSource error:", error);
+    };
+
+    eventSource.onclose = function() {
+        console.log("EventSource connection closed");
+    };
+</script>
+
+</body>
+</html>

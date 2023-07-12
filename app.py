@@ -1,16 +1,18 @@
 from fastapi import BackgroundTasks
 from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 from docx2pdf import convert
 import logging
 import docExtractors
 import os
 from openAIModules.deficiencies_mapper import get_deficiencies
-from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi import FastAPI,Request, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pathlib import Path
 from docMaker import DocAI
-
-
+from pygtail import Pygtail
+from fastapi.responses import StreamingResponse
+import time
 logging.basicConfig(format='%(message)s')
 log = logging.getLogger(__name__)
 HOST_URL = "http://localhost:8000"
@@ -18,6 +20,7 @@ HOST_URL = "http://localhost:8000"
 BASE_PATH = os.getcwd()
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
 # Dictionary to store tasks
 tasks = {}
 
@@ -34,6 +37,29 @@ ALLOWED_EXTENSIONS = {"pdf","docx"}
 # Define upload folder
 UPLOAD_FOLDER = "static"
 
+def sleep_until_file_changes(filename):
+    last_modified = os.path.getmtime(filename)
+    while True:
+        time.sleep(1)
+        current_modified = os.path.getmtime(filename)
+        if current_modified > last_modified:
+            return True
+
+def fastapi_logger():
+    """creates logging information"""
+    filename = "text_file.txt"
+    while True:
+        if sleep_until_file_changes(filename):
+            print("True")
+            for line in Pygtail(filename):
+                content = line.strip()
+                print(content)
+                yield content
+            continue
+        else:
+            print("File not changed")
+            yield "File not changed"
+            continue
 
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -100,5 +126,24 @@ async def converter():
     except Exception as e:
         return {'message': f'Conversion failed: {str(e)}'}
 
+
+@app.get("/api/log_stream")
+async def stream():
+    """returns logging information"""
+    response = StreamingResponse(fastapi_logger(), media_type="text/event-stream")
+    response.headers["Cache-Control"] = "no-cache"
+    response.headers["Connection"] = "keep-alive"
+    response.headers["Transfer-Encoding"] = "chunked"
+
+    async def event_generator():
+        async for line in fastapi_logger():
+            yield f"data: {line}\n\n"
+    response.body = event_generator()
+    return response
+
+@app.get("/log_viewer")
+async def log_viewer(request: Request):
+    """renders the log viewer HTML template"""
+    return templates.TemplateResponse("log_viewer.html", {"request": request})
 
 
