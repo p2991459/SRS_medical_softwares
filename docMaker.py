@@ -8,6 +8,9 @@ import ast
 import re
 from colorama import Fore, Style
 from docx.shared import RGBColor
+from logger import Logger
+
+
 # Create a custom formatter
 class ColorFormatter(logging.Formatter):
     def format(self, record):
@@ -20,6 +23,7 @@ class DocAI:
     '''Takes docx as input and call openai to modify text and save the doc after parsing the openai response
     '''
     log = logging.getLogger(__name__)
+    LOG = Logger(__name__)
     handler = logging.StreamHandler()
     handler.setFormatter(ColorFormatter())
     log.addHandler(handler)
@@ -45,7 +49,7 @@ class DocAI:
                         #open("Logs.txt", "a+").write(output_from_gpt)'''
         pass
     def updateDoc(self):
-        file = open("text_file.txt", "a+")
+        file = open("logs.txt", "a+")
         input_file = "SRS.docx"
         doc = Document(input_file)
         paragraphs = doc.paragraphs
@@ -58,50 +62,47 @@ class DocAI:
             if "p" in str(element):
                 pass #TODO: paragraphs are set as it is, need to modify the structure in future
             elif "tbl" in str(element):
-                print("\n=======================================================\n")
-                file.write("\n=======================================================\n")
-                file.flush()
-                print(f"Entering in table: {tbl_counter}")
+                self.LOG.info("\n=======================================================\n")
+                self.LOG.info(f"Entering in table: {tbl_counter}")
                 table_data = docExtractors.read_table(tables[tbl_counter])
                 self.log.warning("Getting new table data from the SRS DOC....")
-                file.write("Getting new table data from the SRS DOC....")
-                file.flush()
-                print(f"Inserting table data into OPENAI.......")
-                print(f"Getting output from OPENAI......")
-                file.write("Getting output from OPENAI......")
-                file.flush()
+                self.LOG.info("Getting new table data from the SRS DOC....")
+                self.LOG.info(f"Inserting table data into OPENAI.......")
+                self.LOG.info(f"Getting output from OPENAI......")
                 output_from_gpt = self.GptResponse(table_data)[0]
                 if output_from_gpt == "ending the task":
-                    print("Task Ended.")
+                    self.LOG.info("Task Ended.")
                     return "Task ended"
-                print(f"Successfully Got the output from OPENAI.")
-                file.write("Successfully Got the output from OPENAI.")
-                file.flush()
+                self.LOG.info(f"Successfully Got the output from OPENAI.")
                 pattern = r'\[\[.*'
                 matches = re.findall(pattern, output_from_gpt, re.DOTALL)
                 if len(matches) != 0:
                     raw_tables = matches[0].replace("'", "'''").strip().split("\n\n")
                     self.log.warning(
                         f"There can be multiple output tables so extract each raw table, here is the length of raw tables: {len(raw_tables)}")
+                    self.LOG.info(f"There can be multiple output tables so extract each raw table, here is the length of raw tables: {len(raw_tables)}")
                     for raw_table in raw_tables:
                         updated_table = str(raw_table).replace("'", "'''")
-                        print(f"Typecasting table using ast......")
+                        self.LOG.info(f"Typecasting table using ast......")
                         try:
                             updated_table = ast.literal_eval(updated_table)
                             docInstance = DocMaster()
                             docInstance.updateTable(tables[tbl_counter], updated_table)
                             # table = docExtractors.create_table(updated_doc, updated_table)
                             self.log.warning("Created table using ast.........")
+                            self.LOG.info("Created table using ast.........")
                         except Exception as e:
                             self.log.warning(f"Error in typecasting due to: {e}\n Skipping table update")
+                            self.LOG.info(f"Error in typecasting due to: {e}\n Skipping table update")
+
                 else:
                     pass
                 text_data += str(table_data) + "\n"
                 tbl_counter = tbl_counter + 1
-        print("Preparing final document to save...........")
+        self.LOG.info("Preparing final document to save...........")
         doc.save("./static/output_document.docx")
         open("word_text.txt", 'w', encoding='utf-8').write(text_data)
-        print("Wooo!Document Saved Successfully.")
+        self.LOG.info("Wooo!Document Saved Successfully.")
 
 
 

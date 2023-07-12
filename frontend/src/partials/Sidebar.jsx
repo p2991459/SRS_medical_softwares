@@ -48,12 +48,32 @@ function Sidebar({ sidebarOpen, setSidebarOpen, getResponseData, showDownloadBut
             .then((response) => response.json())
             .then((res) => {
                console.log("checkFile", res.file_created);
-              if (res.file_created === true) {
-                  showDownloadButton(true);
-                  setLoadingData(false);
-                localStorage.setItem("Docx",res.file_name)
-                // setTimeout(() => {
-                // }, 9000);
+              if (res.file_created === false) {
+                setTimeout(()=>{
+                  fetch("http://localhost:8000/api/check_file_status",{
+                    headers: {
+                      method: 'GET'
+                    }
+                  })
+                    .then((response) => response.json())
+                    .then((res) => {
+                       console.log("checkFile111", res.file_created);
+                      if (res.file_created === true) {
+                          showDownloadButton(true);
+                          setLoadingData(false);
+                        localStorage.setItem("Docx",res.file_name)
+                       
+                    }
+                    })
+                    .catch((error) => {
+                      console.log("Error:", error);
+                    });
+                },150000)
+                
+                //   showDownloadButton(true);
+                //   setLoadingData(false);
+                // localStorage.setItem("Docx",res.file_name)
+               
             }
             })
             .catch((error) => {
@@ -306,7 +326,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen, getResponseData, showDownloadBut
                                 padding: "8px",
                                 width: "130px",
                                 textAlign: "center",
-                                width: "100%"
+                                // width: "100%"
                               }}
                               className="rounded-md text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 "
                             >

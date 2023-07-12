@@ -47,7 +47,7 @@ def sleep_until_file_changes(filename):
 
 def fastapi_logger():
     """creates logging information"""
-    filename = "text_file.txt"
+    filename = "logs.txt"
     while True:
         if sleep_until_file_changes(filename):
             print("True")
@@ -100,6 +100,12 @@ async def DocUpdate(background_tasks: BackgroundTasks):
         pass
     try:
         os.remove("./static/error.docx")
+    except FileNotFoundError as e:
+        pass
+    try:
+        file = open("logs.txt","w")
+        file.truncate(0)
+        file.close()
     except FileNotFoundError as e:
         pass
     background_tasks.add_task(docAI.updateDoc)

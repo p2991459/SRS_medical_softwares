@@ -43,6 +43,10 @@ function DashboardCard09({
     }
   }, [responsedData]);
 
+  // const handleWindow = () => {
+  //   window.open('http://127.0.0.1:8000/api/log_stream', '_blank');
+  // }
+
   return (
     <div>
       {/* loader middle chat  */}
@@ -161,14 +165,21 @@ function DashboardCard09({
                             Updating the Docx through AI is a long
                             <br /> process. It can take upto 3-5 min.
                           </p>
-                          {/* <div class="flex justify-center">
-                          <button
-                            type="button"
-                            class="text-white bg-blue-500 hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                          >
-                            Check logs
-                          </button>
-                        </div> */}
+                          <div class="flex justify-center">
+                            <button
+                              type="button"
+                              class="text-white bg-blue-500 hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                              onClick={() =>
+                                window.open(
+                                  "http://127.0.0.1:8000/api/log_stream",
+                                  "_blank"
+                                )
+                              }
+                              target="_blank"
+                            >
+                              Check logs
+                            </button>
+                          </div>
                           <p className="-mb-7 font-semibold text-center">
                             You can download the updated doc once updating
                             process is finished
